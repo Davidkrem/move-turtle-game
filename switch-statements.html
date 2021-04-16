@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h1>Go Turtle, Lil Turtle!</h1>
+      <h2>
+        Keyboard buttons <span>&#8593; &#8594; &#8595; &#8592; </span>to play.
+      </h2>
+      <br />
+      <br />
+
+      <img
+        class="turt"
+        width="250"
+        src="https://image.freepik.com/free-vector/turtle-cartoon-funny-isolated-white-background_286786-45.jpg"
+        alt="Turt"
+      />
+    </main>
+
+    <style>
+      h1 {
+        font-family:monospace;
+        font-weight: 700;
+        font-size: 75px;
+        color: green;
+        text-align: center;
+      }
+      h2 {
+          font-family: monospace;
+          font-weight: 100;
+          color:green;
+          text-align: center;
+          font-size: 30px;
+
+      }
+      span {
+          color: rgb(55, 228, 55);;
+      }
+
+      .turt {
+        position: relative;
+        --x: 0;
+        --y: 0;
+        --rotateX: 0;
+        --rotate: 0;
+        transform: translateX(var(--x)) translateY(var(--y))
+          rotateY(var(--rotateX)) rotate(var(--rotate));
+        transition: transform 0.2s;
+      {
+    </style>
+
+    <script>
+      /*eslint-disable*/
+      const turtle = document.querySelector('.turt');
+      let x = 0;
+      let y = 0;
+      const speed = 30;
+      let flipped = false;
+      let rotate = 0;
+
+      function handleKeyDown(event) {
+        // Only allows  arrow keys to function
+        if (!event.key.includes('Arrow')) {
+          return;
+        }
+        switch (event.key) {
+          case 'ArrowUp':
+            y -= 1;
+            rotate = -90;
+            break;
+          case 'ArrowDown':
+            y += 1;
+            rotate = 90;
+            break;
+          case 'ArrowLeft':
+            x -= 1;
+            rotate = 0;
+            flipped = true;
+            break;
+          case 'ArrowRight':
+            x += 1;
+            rotate = 0;
+            flipped = false;
+            break;
+          default:
+            console.log('That is not a valid move');
+            break;
+        }
+
+        turtle.setAttribute(
+          'style',
+          `--rotateX: ${flipped ? '180deg' : '0'};
+          --x: ${x * speed}px;
+           --y: ${y * speed}px;
+           --rotate: ${rotate}deg;
+           `
+        );
+      }
+      window.addEventListener('keydown', handleKeyDown);
+    </script>
+  </body>
+</html>
