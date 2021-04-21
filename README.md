@@ -12,9 +12,10 @@ Move lil turtle all around the page! This project uses javaScript switch stateme
 
 ### **Technologies**
 
+- JavaScript
 - HTML
 - CSS
-- JavaScript
+
 
 ### **Project status**
 
